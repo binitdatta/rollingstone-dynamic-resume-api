@@ -1,0 +1,102 @@
+##1. Get All
+
+http://localhost:8080/binitdatta/dynamicresume/api/careersummary
+
+[  
+   {  
+      "id":19,
+      "careerSummaryDescription":"Proven Track Record of reducing time and cost while delivering defect free systems in production, adding value through mentoring and team building."
+   },
+   {  
+      "id":20,
+      "careerSummaryDescription":"Ability to catch gaps in requirements analysis , test plans, issues in Scrum intra project dependency, preventing costly mistakes early on to save time and money.."
+   },
+   {  
+      "id":21,
+      "careerSummaryDescription":"Ability to learn fast and absorb knowledge quickly. First system developed was in FoxPro in 1995, working on Amazon Web Service Migration using Docker now."
+   },
+   {  
+      "id":22,
+      "careerSummaryDescription":"Ability to provide solutions across the teams, solving multi systems business problems, using cutting edge technology."
+   },
+   {  
+      "id":23,
+      "careerSummaryDescription":"Proven lead designer / architect track record over 20 years for leading and owning end to end SDLC of different types."
+   },
+   {  
+      "id":24,
+      "careerSummaryDescription":"Experienced working for clients in more than 9 different business verticals including process and discrete manufacturing, Coal Mining, Banking, Mortgage, Healthcare, Telecom, Retail etc.\n"
+   },
+   {  
+      "id":26,
+      "careerSummaryDescription":"Has the background of communicating successfully to Vice Presidents and above in their return on investment terms and explained decision made in software projects."
+   },
+   {  
+      "id":27,
+      "careerSummaryDescription":"Has the background of communicating successfully to junior and senior developers in their low level technology terms, through design documents, verbal presentation, while boarding etc."
+   },
+   {  
+      "id":28,
+      "careerSummaryDescription":"Able to see through future challenges early in the development cycle which leads to very detailed design / architecture document lowering risks of future reworks and cost escalations.\n"
+   },
+   {  
+      "id":29,
+      "careerSummaryDescription":"Strong understanding in across the board technologies used normally in modern software development including Databases, Caching, middleware, application servers, Front ends including JavaScript libraries and mobile development.\n"
+   },
+   {  
+      "id":30,
+      "careerSummaryDescription":"Excellent team player and motivator with good analytical, planning and interpersonal skills."
+   },
+   {  
+      "id":31,
+      "careerSummaryDescription":"Proven track record of developing and mentoring junior moderately paid resources into highly productive resources, adding value to the organization.\n."
+   },
+   {  
+      "id":32,
+      "careerSummaryDescription":"Has practical knowledge of JEE design patterns through real life project implementation in multiple projects."
+   },
+   {  
+      "id":33,
+      "careerSummaryDescription":"Strong experience in developing and deploying J2EE components in IBM Webspehre 6.1 AppServer and BEA Weblogic 8.x/9.x,"
+   },
+   {  
+      "id":34,
+      "careerSummaryDescription":"Large multi site Custom ERP development (in J2EE / Oracle / UNIX platforms) and implementation experience is a USP and a specific Edge. High level of familiarity with issues in large-scale software projects implementations.\n"
+   },
+   {  
+      "id":35,
+      "careerSummaryDescription":"Good exposure in load / stress testing as well Virtual machine tuning is used to eliminate / lower chances of production outages and downtime.\n"
+   },
+   {  
+      "id":36,
+      "careerSummaryDescription":"Having sound experience on working using Agile methods like EXtreme Programming (XP) and SCRUM and RUP methodologies."
+   },
+   {  
+      "id":37,
+      "careerSummaryDescription":"Strong understanding in across the board technologies used normally in modern software development including Databases, Caching, middleware, application servers, Front ends including JavaScript libraries and mobile development.\n"
+   },
+   {  
+      "id":4,
+      "careerSummaryDescription":"AWS Certified Solution Architect Professional Achieved in 2018 April."
+   }
+]
+
+### 2. POST http://localhost:8080/binitdatta/dynamicresume/api/careersummary
+
+
+{
+  "careerSummaryDescription": "AWS Certified Solution Architect Professional."
+}
+
+###3. GET http://localhost:8080/binitdatta/dynamicresume/api/careersummary/4
+
+###4. DELETE http://localhost:8080/binitdatta/dynamicresume/api/careersummary/26
+
+###5. PUT http://localhost:8080/binitdatta/dynamicresume/api/careersummary/4
+
+Body
+
+{
+	"id":4,
+  "careerSummaryDescription": "AWS Certified Solution Architect Professional Achieved in 2018 April."
+}
