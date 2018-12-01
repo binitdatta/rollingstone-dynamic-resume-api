@@ -1,6 +1,5 @@
 package com.rollingstone.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,8 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rollingstone.domain.ProfessionalExperience;
+import com.rollingstone.domain.TechContribution;
+import com.rollingstone.domain.TechContributionDTO;
 import com.rollingstone.exceptions.HTTP404Exception;
 import com.rollingstone.service.ProfessionalExperienceService;
+import com.rollingstone.service.ProfessionalExperienceTechControbutionService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -31,17 +33,29 @@ public class ProfessionalExperienceController extends AbstractController {
 	Logger logger = LoggerFactory.getLogger(ProfessionalExperienceController.class);
 	
 	private ProfessionalExperienceService professionalExperienceService;
+	private ProfessionalExperienceTechControbutionService professionalExperienceTechControbutionService;
+
 	
-	public ProfessionalExperienceController(ProfessionalExperienceService professionalExperienceService) {
+	public ProfessionalExperienceController(ProfessionalExperienceService professionalExperienceService, ProfessionalExperienceTechControbutionService professionalExperienceTechControbutionService) {
 		this.professionalExperienceService = professionalExperienceService;
+		this.professionalExperienceTechControbutionService = professionalExperienceTechControbutionService;
 	}
 	
 	@GetMapping("/professionalexperience")
 	@ResponseBody
-	public List<ProfessionalExperience> getAllCareerSummaries() {
+	public List<ProfessionalExperience> getAllProfessionalExperiences() {
  		
 		return professionalExperienceService.getAllProfessionalExperience();
 	}
+	
+	@GetMapping("/professionalexperience/techcontribution")
+	@ResponseBody
+	public List<TechContribution> getAllTechContributions() {
+ 		
+		return professionalExperienceTechControbutionService.getAllProfessionalExperienceTechControbution();
+	}
+	
+	
 	
 	@GetMapping("/professionalexperience/{id}")
 	@ResponseBody
@@ -49,6 +63,17 @@ public class ProfessionalExperienceController extends AbstractController {
  		
 		try {
 			return professionalExperienceService.getProfessionalExperience(id);
+		} catch (Exception e) {
+			 throw new HTTP404Exception("The Requested ProfessionalExperience was not found", new Date(), e);
+		}
+	}
+	
+	@GetMapping("/professionalexperience/techcontribution/{id}")
+	@ResponseBody
+	public List<TechContributionDTO> getProfessionalExperienceTechContribution(@PathVariable("id") long id) {
+ 		
+		try {
+			return professionalExperienceTechControbutionService.getTechContributionByID(id);
 		} catch (Exception e) {
 			 throw new HTTP404Exception("The Requested ProfessionalExperience was not found", new Date(), e);
 		}
@@ -62,6 +87,16 @@ public class ProfessionalExperienceController extends AbstractController {
 		
 		ProfessionalExperience _professionalExperience = professionalExperienceService.addProfessionalExperience(professionalExperience);
 		return _professionalExperience;
+	}
+	
+	@PostMapping(value = "/professionalexperience/{id}/techcontribution")
+	@ResponseBody
+	public TechContribution addProfessionalExperienceTechContriibution(@RequestBody TechContribution techContribution) {
+ 
+		logger.info("Receved POJO :"+ techContribution.toString());
+		
+		TechContribution _professionalExperienceTechContrib = professionalExperienceTechControbutionService.addProfessionalExperienceTechControbution(techContribution);
+		return _professionalExperienceTechContrib;
 	}
 	
 	@DeleteMapping("/professionalexperience/{id}")
@@ -78,8 +113,22 @@ public class ProfessionalExperienceController extends AbstractController {
  
 	}
 	
+	@DeleteMapping("/professionalexperience/{id}/techcontribution/{techId}")
+	public ResponseEntity<String> deleteProfessionalExperienceTechContribution(@PathVariable("techId") long techId) {
+		System.out.println("Delete TechContribution with ID = " + techId + "...");
+ 
+		try {
+			professionalExperienceTechControbutionService.deleteProfessionalExperienceTechContribution(techId);
+			return new ResponseEntity<>("ProfessionalExperience Tech Contribution has been deleted!", HttpStatus.OK);
+
+		} catch (Exception e) {
+			 throw new HTTP404Exception("The Requested ProfessionalExperience Tech Contribution  was not found", new Date(), e);
+		}
+ 
+	}
+	
 	@DeleteMapping("/professionalexperience")
-	public ResponseEntity<String> deleteAllCustomers() {
+	public ResponseEntity<String> deleteAllProfessionalExperience() {
 		System.out.println("Delete All ProfessionalExperience...");
  
 		professionalExperienceService.deleteAllProfessionalExperience();
@@ -89,11 +138,24 @@ public class ProfessionalExperienceController extends AbstractController {
 	
 	@PutMapping("/professionalexperience/{id}")
 	@ResponseBody
-	public ProfessionalExperience updateCustomer(@RequestBody ProfessionalExperience professionalExperience) {
+	public ProfessionalExperience updateProfessionalExperience(@RequestBody ProfessionalExperience professionalExperience) {
  
 		try {
 			ProfessionalExperience updatedProfessionalExperience = professionalExperienceService.updateProfessionalExperience(professionalExperience);
 			return updatedProfessionalExperience;
+		} catch (Exception e) {
+			 throw new HTTP404Exception("The Requested ProfessionalExperience was not found", new Date(), e);
+		}
+			
+	}
+	
+	@PutMapping("/professionalexperience/{id}/techcontribution/{techId}")
+	@ResponseBody
+	public TechContribution updateProfessionalExperienceTechControbition(@RequestBody TechContribution techContribution) {
+ 
+		try {
+			TechContribution updatedProfessionalExperienceTechContribution = professionalExperienceTechControbutionService.updateProfessionalExperienceTechContribution(techContribution);
+			return updatedProfessionalExperienceTechContribution;
 		} catch (Exception e) {
 			 throw new HTTP404Exception("The Requested ProfessionalExperience was not found", new Date(), e);
 		}

@@ -69,3 +69,11 @@ where id = 21;
 
 update professional_experience set exp_details = 'This was an ERP Application Development project including all regular modules such as Finance, Materials, Purchase, Sales & Distribution, Payroll, Personnel and others for the Royal Calcutta Turf Clubs (RCTC) as Client'
 where id = 22;
+
+CREATE TABLE `professional_experience_tech_contribution` (
+  `id` bigint(20) NOT NULL,
+  `tech_controbution_made` varchar(255) DEFAULT NULL,
+  `prof_exp_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKbelh6l9kl5753pj9w77s40ys3` (`prof_exp_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
