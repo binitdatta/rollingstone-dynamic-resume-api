@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.rollingstone.controller.CareerSummaryController;
-import com.rollingstone.dao.CareerSummaryRepository;
 import com.rollingstone.domain.CareerSummary;
+import com.rollingstone.repository.CareerSummaryRepository;
 
 @Service
 public class CareerSummaryService {

@@ -1,4 +1,4 @@
-package com.rollingstone.dao;
+package com.rollingstone.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
