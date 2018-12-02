@@ -13,9 +13,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "professional_experience")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ProfessionalExperience {
 
 	@Id
@@ -31,6 +33,10 @@ public class ProfessionalExperience {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "professionalExperience")
 	@JsonIgnore
 	private Set<TechContribution> techContributions = new HashSet<TechContribution>();
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "professionalExperience")
+	@JsonIgnore
+	private Set<TechnologyUsed> technologiesUsed = new HashSet<TechnologyUsed>();
 	
 	public Long getId() {
 		return id;

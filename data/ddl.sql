@@ -77,3 +77,53 @@ CREATE TABLE `professional_experience_tech_contribution` (
   PRIMARY KEY (`id`),
   KEY `FKbelh6l9kl5753pj9w77s40ys3` (`prof_exp_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+ALTER TABLE `resume`.`professional_experience_technology_used` 
+CHANGE COLUMN `id` `id` BIGINT(20) NOT NULL AUTO_INCREMENT ;
+
+CREATE TABLE `professional_experience_technology_used` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `technology_used` varchar(255) DEFAULT NULL,
+  `prof_exp_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKa9qadcy7pd6mqspa8yd803ob7` (`prof_exp_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `education` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `college_name` varchar(255) DEFAULT NULL,
+  `degree_name` varchar(255) DEFAULT NULL,
+  `gpa` double DEFAULT NULL,
+  `is_vendor_certification` bit(1) DEFAULT NULL,
+  `university_name` varchar(255) DEFAULT NULL,
+  `year_completed` int(11) DEFAULT NULL,
+  `year_started` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+ALTER TABLE `resume`.`education` 
+CHANGE COLUMN `id` `id` BIGINT(20) NOT NULL AUTO_INCREMENT ;
+
+CREATE TABLE `skill` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `business_domain_specific_skill_details` varchar(255) DEFAULT NULL,
+  `is_business_domain_skill` bit(1) DEFAULT NULL,
+  `num_years` int(11) DEFAULT NULL,
+  `skill_details` varchar(255) DEFAULT NULL,
+  `skill_name` varchar(255) DEFAULT NULL,
+  `year_gained` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+ALTER TABLE `resume`.`skill` 
+CHANGE COLUMN `id` `id` BIGINT(20) NOT NULL AUTO_INCREMENT ;
+
+ALTER TABLE `resume`.`skill` 
+CHANGE COLUMN `business_domain_specific_skill_details` `business_domain_specific_skill_details` VARCHAR(1000) NULL DEFAULT NULL ,
+CHANGE COLUMN `skill_details` `skill_details` VARCHAR(4000) NULL DEFAULT NULL ,
+CHANGE COLUMN `skill_name` `skill_name` VARCHAR(4000) NULL DEFAULT NULL ;
+
